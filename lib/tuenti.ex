@@ -9,15 +9,26 @@ defmodule Tuenti do
     remove_empty_lines(Enum.drop(lines, 1))
   end
 
-  def numbers_in_line(line) do
-    Enum.map(String.split(line, " "), fn(x) -> elem(Integer.parse(x), 0) end)
+  def print_result(list) do
+    Enum.reduce(list, 1, fn x, acc ->
+      print_result_line(x, acc)
+      1 + acc
+    end)
   end
 
-  def print_result_line(result, line_number) do
-    IO.puts "Case #" <> Integer.to_string(line_number) <> ": " <> Integer.to_string(result)
+  defp numbers_in_line(line) do
+    Enum.map(String.split(line, " "), fn x -> elem(Integer.parse(x), 0) end)
+  end
+
+  defp print_result_line(result, line_number) when is_float(result) do
+    IO.puts("Case #" <> Integer.to_string(line_number) <> ": " <> :erlang.float_to_binary(result, [decimals: 0]))
+  end
+  
+  defp print_result_line(result, line_number) do
+    IO.puts("Case #" <> Integer.to_string(line_number) <> ": " <> Integer.to_string(result))
   end
 
   defp remove_empty_lines(list) do
-     Enum.filter list, fn(x) -> x != "" end
+    Enum.filter(list, fn x -> x != "" end)
   end
 end
