@@ -9,7 +9,11 @@ defmodule TuentiTest do
   #  Challenge1.solve("inputs/input1")
   # end
 
-  test "second challenge test" do
-    Challenge2.solve("inputs/test2")
+  #test "second challenge test" do
+  #  Challenge2.solve("inputs/test2")
+  #end
+
+  test "second challenge" do
+    Challenge2.solve("inputs/input2")
   end
 end

@@ -20,10 +20,6 @@ defmodule Tuenti do
     Enum.map(String.split(line, " "), fn x -> elem(Integer.parse(x), 0) end)
   end
 
-  defp print_result_line(result, line_number) when is_float(result) do
-    IO.puts("Case #" <> Integer.to_string(line_number) <> ": " <> :erlang.float_to_binary(result, [decimals: 0]))
-  end
-  
   defp print_result_line(result, line_number) do
     IO.puts("Case #" <> Integer.to_string(line_number) <> ": " <> Integer.to_string(result))
   end
