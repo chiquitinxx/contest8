@@ -16,8 +16,12 @@ defmodule Tuenti do
     end)
   end
 
-  defp numbers_in_line(line) do
+  def numbers_in_line(line) do
     Enum.map(String.split(line, " "), fn x -> elem(Integer.parse(x), 0) end)
+  end
+
+  defp print_result_line(result, line_number) when is_list(result) do
+    IO.puts("Case #" <> Integer.to_string(line_number) <> ": " <> Enum.join(result, " "))
   end
 
   defp print_result_line(result, line_number) do
